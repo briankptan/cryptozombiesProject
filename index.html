@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style type="text/css">
+
+.createZombieButton {
+  display: inline-block;
+  padding: 15px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+}
+.createZombieButton:hover {
+  padding: 17px 14px;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #eb0b0b
+}
+.createZombieButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+.showZombieButton {
+  display: inline-block;
+  padding: 15px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+}
+
+.showZombieButton:hover {
+  padding: 17px 14px;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #eb0b0b
+}
+.showZombieButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+
+
+.levelupButton {
+  display: inline-block;
+  padding: 15px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+}
+.levelupButton:hover {
+  padding: 17px 14px;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #eb0b0b
+}
+.levelupButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+.feedOnKittyButton {
+  display: inline-block;
+  padding: 15px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+}
+
+.feedOnKittyButton:hover {
+  padding: 17px 14px;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #eb0b0b
+}
+
+.feedOnKittyButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+.transferZombieButton {
+  display: inline-block;
+  padding: 15px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+}
+
+.transferZombieButton:hover {
+  padding: 17px 14px;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #eb0b0b
+}
+
+.transferZombieButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+.attackZombieButton {
+  display: inline-block;
+  padding: 15px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+}
+
+.attackZombieButton:hover {
+  padding: 17px 14px;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: #eb0b0b
+}
+
+.attackZombieButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+ul li::before {
+  content: "\2022";
+  color: white;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+  color: white;
+  background-color:none;
+}
+
+ul {
+  color: white;
+}
+
+
+
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>CryptoZombies front-end</title>
+<link rel="icon" href="favicon.ico">
+  <script language="javascript" type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+  <script language="javascript" type="text/javascript" src="cryptozombies_abi.js"></script>
+</head>
+
+<body style = "background: url(backgrounnd.jpeg);
+               background-size: 1400px 700px;
+               /* background-size: 933.33px 466.66px; */
+               background-repeat: no-repeat;">
+  <div id="txStatus"></div>
+  <div id="zombies"></div>
+
+  <label for="zombieName"></label>
+  <input type="text" id="zombieName" size="10">
+
+  <button class="createZombieButton">Create Zombie</button>
+  <button class="showZombieButton">Show Zombies</button>
+  <button class="attackZombieButton">Attack Zombie</button>
+  <button class="levelupButton">Level Up</button>
+  <button class="feedOnKittyButton">Feed on Kitty</button>
+  <button class="transferZombieButton">Transfer Zombie</button>
+
+  <script>
+
+    var element = document.getElementById("txStatus");
+    element.style.color = "#FFFFFF";
+
+    var cryptoZombies;
+    var userAccount;
+
+    const names = [];
+
+    const showZombieButton = document.querySelector('.showZombieButton');
+    const createZombieButton = document.querySelector('.createZombieButton');
+    const attackZombieButton = document.querySelector('.attackZombieButton');
+    const levelupButton = document.querySelector('.levelupButton');
+    const feedOnKittyButton = document.querySelector('.feedOnKittyButton');
+    const transferZombieButton = document.querySelector('.transferZombieButton');
+      
+    function startApp() {
+	
+      //ZombieOwnership contract address
+      var cryptoZombiesAddress = "0xF9c54E3e65B115E81c4742E9674bCb72aca16823";
+
+      cryptoZombies = new web3.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+
+
+ //the following code from Lesson 6, chapter 5 is obsolete
+ //     var accountInterval = setInterval(function () {
+
+  //      if (web3.eth.accounts[0] !== userAccount) {
+          //userAccount = web3.eth.accounts[0];
+
+     //     getZombiesByOwner(userAccount)
+      //      .then(displayZombies);
+      //  }
+     // }, 100);
+
+      cryptoZombies.events.Transfer({ filter: { _to: userAccount } })
+        .on("data", function (event) {
+          let data = event.returnValues;
+          getZombiesByOwner(userAccount).then(displayZombies);
+        }).on("error", console.error);
+    }
+
+    function displayZombies(ids) {
+      $("#zombies").empty();
+      for (id of ids) {
+        console.log("ID: ", id);
+        getZombieDetails(id)
+          .then(function (zombie) {
+            console.log("names[id]: " + names[id]);
+            names[id] = zombie.name;
+            $("#zombies").append(`<div class="zombie">
+              <ul>
+                <li>Name: ${zombie.name}</li>
+                <li>DNA: ${zombie.dna}</li>
+                <li>Level: ${zombie.level}</li>
+                <li>Wins: ${zombie.winCount}</li>
+                <li>Losses: ${zombie.lossCount}</li>
+                <li>Ready Time: ${zombie.readyTime}</li>
+                <li>User Acct: ${userAccount}</li>
+                
+              </ul>
+            </div>`);
+          });
+      }
+    }
+
+    function createRandomZombie(name) {
+
+      $("#txStatus").text("Creating new zombie on the blockchain. This may take a while...");
+
+      return cryptoZombies.methods.createRandomZombie(name)
+        .send({ from: userAccount })
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Successfully created " + name + "!");
+          getZombiesByOwner(userAccount).then(displayZombies);
+          names[id] = name;
+        })
+        .on("error", function (error) {
+
+          $("#txStatus").text("Failed to create Random Zombie");
+        });
+    }
+
+    function feedOnKitty(zombieId, kittyId) {
+      $("#txStatus").text("Eating a kitty. This may take a while...");
+      console.log("KITTY");
+      return cryptoZombies.methods.feedOnKitty(zombieId, kittyId)
+        .send({ from: userAccount })
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Ate a kitty and spawned a new Zombie!");
+          getZombiesByOwner(userAccount).then(displayZombies);
+        })
+        .on("error", function (error) {
+          $("#txStatus").text("No Kitties to feed on");
+        });
+    }
+
+    function levelUp(zombieId) {
+      $("#txStatus").text("Leveling up your zombie...");
+      console.log(zombieId);
+      return cryptoZombies.methods.levelUp(zombieId)
+        .send({ from: userAccount, value: web3.utils.toWei("0.001", "ether") })
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Power overwhelming! Zombie successfully leveled up");
+        })
+        .on("error", function (error) {
+          $("#txStatus").text("Power underwhelming. Failed to level up");
+        });
+    }
+
+    function transferZombie(receiver, id){
+      $("#txStatus").text("Transfering your zombie on the blockchain. This may take a while...");
+      return cryptoZombies.methods.transfer(receiver, id)
+          .send({ from: userAccount })
+          .on("receipt", function(receipt) {
+              $("#txStatus").text("Successfully transfered to " + receiver + "!");
+
+              getZombiesByOwner(receiver).then(displayZombies);
+          })
+          .on("error", function(error) {
+
+              $("#txStatus").text("Failed to transfer zombie.");
+          });
+    }
+
+    function getZombieDetails(id) {
+      $("#txStatus").text("Zombie Details: ");
+      return cryptoZombies.methods.zombies(id).call()
+    }
+
+    function zombieToOwner(id) {
+      return cryptoZombies.methods.zombieToOwner(id).call()
+    }
+
+    function getZombiesByOwner(owner) {
+      return cryptoZombies.methods.getZombiesByOwner(owner).call()
+    }
+
+    function attackZombie(zombieId, targetId) {
+      console.log("ZOMBIE ID: " + names[zombieId] + " TARGET ID: " + names[targetId]);
+      $("#txStatus").text("attacking " + names[targetId] + " !!");
+      return cryptoZombies.methods.attack(zombieId, targetId)
+        .send({ from: userAccount})
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Attack over");
+          getZombiesByOwner(userAccount).then(displayZombies);
+        })
+        .on("error", function (error) {
+          $("#txStatus").text("Failed Attack");
+        });
+    }
+
+    window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            const accounts = await ethereum.enable();
+            // Acccounts now exposed
+            userAccount = accounts[0];
+            startApp()
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+        userAccount = web3.eth.accounts[0];
+        startApp()
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+   });
+ 
+   //the following code from Lesson 6, chapter 2 is obsolete
+   //metamask no longer inject web3 since early 2021
+   //window.addEventListener('load', function () {
+
+  //    if (typeof web3 !== 'undefined') {
+   //     web3js = new Web3(web3.currentProvider);
+   //   } else {
+
+    //  }
+
+
+    //  startApp()
+
+  //  }) 
+
+   ethereum.on('accountsChanged', (accounts) => {
+       window.location.reload();
+   });
+
+   ethereum.on('chainChanged', (chainId) => {
+       window.location.reload(); 
+   });  
+
+    createZombieButton.addEventListener('click', () => {
+        var inputName = document.getElementById("zombieName").value;
+        createRandomZombie(inputName);
+        document.getElementById("zombieName").value = "";
+    });
+
+    showZombieButton.addEventListener('click', () => {
+      getZombiesByOwner(userAccount)
+            .then(displayZombies);
+    });
+
+    levelupButton.addEventListener('click', () => {
+      getZombiesByOwner(userAccount)
+            .then(levelUp);
+    });
+
+    feedOnKittyButton.addEventListener('click', () => {
+      feedOnKitty("0", "12345");
+    });
+
+    transferZombieButton.addEventListener('click', () => {
+      getZombiesByOwner(userAccount).then(transferZombie);
+    });
+
+    attackZombieButton.addEventListener('click', () => {
+      getZombiesByOwner(userAccount).then(attackZombie(0,1));
+    });
+
+    
+
+
+
+
+  </script>
+</body>
+
+</html>
